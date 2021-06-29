@@ -26,8 +26,7 @@
         ));
     }
     add_action('init', 'ppd_tipo_post_artigo');
-
-    
+   
     function ppd_registrando_taxonomia_noticias() {
         register_taxonomy(
             'noticias',

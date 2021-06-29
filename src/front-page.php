@@ -1,6 +1,6 @@
 <?php
 $estiloPagina = 'home.css';
-require_once 'header.php';
+require_once get_template_directory() . '/pages/template/header.php';
 
 $args = array(
         'post_type' => 'banners',
@@ -23,4 +23,4 @@ if($query->have_posts()):
     <?php
     endwhile;
 endif;
-require_once 'footer.php';
+require_once get_template_directory() . '/pages/template/footer.php';
