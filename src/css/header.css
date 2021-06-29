@@ -1,7 +1,7 @@
 * {
   font-family: "Inter", sans-serif;
   font-style: normal;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 html {
@@ -66,8 +66,18 @@ main {
   display: flex;
 }
 .site-header nav #nav-bar a {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: bold;
+  /* identical to box height, or 143% */
+
+  font-feature-settings: "salt" on, "liga" off;
+
+  /* Text / Gray 900 */
+
   color: #18191f;
-  font-size: 1em;
+
+  font-size: 1.2em;
 }
 .site-header nav #menu-principal .current_page_item {
   border-bottom: 1px solid #0f0e19;

@@ -3,7 +3,6 @@
     require_once get_template_directory() . '/pages/template/header.php';
     if (have_posts()): 
 ?>
-
     <main class="apresentacao">
         <?php
             while(have_posts()): the_post();

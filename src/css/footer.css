@@ -1,8 +1,47 @@
 footer {
+  padding-top: 5%;
   background-color: #fff;
 }
 
-footer .container-alura {
-  color: #0f0e19;
-  padding: 1rem 0;
+hr {
+  width: 90%;
+  background: #010101;
+  opacity: 0.2;
+}
+
+.infos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  flex-direction: row;
+  padding-right: 20%;
+}
+
+.logos {
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+footer .container-ppd {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  font-feature-settings: "salt" on, "liga" off;
+
+  color: #000000;
+
+  text-align: center;
 }

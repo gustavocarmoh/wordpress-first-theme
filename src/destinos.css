@@ -1,16 +1,16 @@
-.formulario-pesquisa-paises {
+.formulario-pesquisa-noticias {
   margin-top: 3rem;
   margin-left: 10%;
   padding-left: 15px;
 }
-.formulario-pesquisa-paises input {
+.formulario-pesquisa-noticias input {
   background-color: #b9b6d6;
   color: #fff;
   padding: 5px;
   border-radius: 3px;
 }
 
-.page-destinos li {
+.page-noticias li {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
   border: 1px solid #9996c3;
@@ -19,7 +19,7 @@
   position: relative;
 }
 
-.page-destinos a {
+.page-noticias a {
   position: absolute;
   top: 15px;
   padding: 5px;
@@ -27,17 +27,17 @@
   background-color: #7976b0;
 }
 
-.page-destinos img {
+.page-noticias img {
   width: 100%;
   height: 30vh;
 }
 
-.page-destinos .row {
+.page-noticias .row {
   margin: auto;
   padding: auto;
 }
 
-.page-destinos .lista-destinos {
+.page-noticias .lista-noticias {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,10 +46,31 @@
   margin: 0 10%;
 }
 
-.page-destinos .titulo-destino {
+.page-noticias .titulo-noticias {
   font-weight: 600;
 }
 
-.lista-destinos {
+.lista-noticias {
   margin-bottom: 4rem !important;
+}
+
+.col-sm-3 {
+  width: 25%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.noticias-container {
+  height: 390px;
+  width: 350px;
+}
+
+.noticias-text {
+}
+
+.noticias-thumbnail img {
+  align-self: center;
 }
