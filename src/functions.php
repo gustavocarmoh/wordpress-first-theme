@@ -4,7 +4,6 @@
     }
     add_action( 'after_setup_theme', 'register_navwalker' );
 
-
     function pegandoTextosParaBanner() {
     
         $args = array(
@@ -46,11 +45,11 @@
         $texto_home_1 = get_post_meta($post->ID, '_texto_home_1', true);
         $texto_home_2 = get_post_meta($post->ID, '_texto_home_2', true);
         ?>
-            <label for="texto_home_1">Texto 1</label>
+            <label for="texto_home_1">Nome completo do aluno:</label>
             <input type="text" name="texto_home_1" style="width: 100%" value="<?= $texto_home_1 ?>"/>
             <br>
             <br>
-            <label for="texto_home_2">Texto 2</label>
+            <label for="texto_home_2">Informações</label>
             <input type="text" name="texto_home_2" style="width: 100%" value="<?= $texto_home_2 ?>"/>
         <?php
     }
@@ -69,10 +68,10 @@
         register_post_type( 
             'banners', 
             array(
-                'labels' => array('name' => 'Banners'),
+                'labels' => array('name' => 'Alunos'),
                 'public' => true,
                 'menu_position' => 1,
-                'menu_icon' => 'dashicons-format-image',
+                'menu_icon' => 'dashicons-admin-users',
                 'supports' => array('title', 'thumbnail')
             )
         );
@@ -97,7 +96,7 @@
             'public' => true,
             'menu_position' => 0,
             'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-admin-paper'
+            'menu_icon' => 'dashicons-welcome-write-blog'
         ));
     }
     add_action('init', 'ppd_tipo_post_artigo');
@@ -118,9 +117,9 @@
         register_post_type('news', array(
             'labels' => array('name' => 'Noticias'),
             'public' => true,
-            'menu_position' => 0,
+            'menu_position' => 1,
             'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-admin-paper'
+            'menu_icon' => 'dashicons-welcome-add-page'
         ));
     }
     add_action('init', 'ppd_tipo_post_noticias');

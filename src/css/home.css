@@ -1,11 +1,78 @@
-.texto-banner-dinamico {
-  text-align: center;
-  margin-top: calc(50vh - 7rem);
+.footer {
+  padding: 0%;
+  background-color: #fff;
 }
-.texto-banner-dinamico span {
-  color: #fff;
-  font-weight: 600;
-  font-size: 7rem;
+
+.banner-logo-container {
+  position: absolute;
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  left: 0px;
+  background-color: #ffffff;
+  width: 15%;
+  height: 75%;
+}
+
+.banner-logo {
+  margin-left: 2%;
+  align-self: center;
+  padding: 10px;
+  width: 90%;
+  height: 80%;
+}
+
+.icon-banner {
+  height: 80%;
+}
+
+.texto-banner-dinamico-container {
+  position: absolute;
+  text-align: center;
+  margin-top: calc(40vh - 7rem);
+  width: 100%;
+  height: 20%;
+  display: flex;
+}
+
+#background {
+  background: #ccc;
+  filter: alpha(opacity=60);
+  /* IE */
+  -moz-opacity: 0.6;
+  /* Mozilla */
+  opacity: 0.6;
+  /* CSS3 */
+  position: absolute;
+  margin-top: calc(42.5vh - 7rem);
+  width: 100%;
+  height: 15%;
+}
+
+.text-container {
+  margin-left: 16%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.text-ppd {
+  position: absolute;
+  text-align: center;
+  margin-top: calc(46.5vh - 7rem);
+  width: 70%;
+  left: 15%;
+}
+
+.texto-banner {
+  color: black;
+
+  font-size: 3rem;
+  line-height: 2.8rem;
+
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: 900;
 }
 
 .imagem-banner {
@@ -15,7 +82,7 @@
 .imagem-banner img {
   width: 100%;
   position: absolute;
-  top: -132px;
+  top: -165px;
   z-index: -1;
   height: 100vh;
   background-color: #000000;

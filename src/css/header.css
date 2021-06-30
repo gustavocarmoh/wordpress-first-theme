@@ -1,5 +1,5 @@
 * {
-  font-family: "Inter", sans-serif;
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   font-weight: normal;
 }
@@ -66,8 +66,7 @@ main {
   display: flex;
 }
 .site-header nav #nav-bar a {
-  font-family: "Inter";
-  font-style: normal;
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
   /* identical to box height, or 143% */
 
