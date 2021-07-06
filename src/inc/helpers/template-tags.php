@@ -72,7 +72,7 @@ function aquila_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'aquila' ),
+		esc_html_x( ' em %s.', 'post date', 'aquila' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
@@ -86,7 +86,7 @@ function aquila_posted_on() {
  */
 function aquila_posted_by() {
 	$byline = sprintf(
-		esc_html_x( ' by %s', 'post author', 'aquila' ),
+		esc_html_x( 'Postado por %s', 'post author', 'aquila' ),
 		'<span class="author vcard"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -132,7 +132,7 @@ function aquila_excerpt_more( $more = '' ) {
 	if ( ! is_single() ) {
 		$more = sprintf( '<a class="aquila-read-more text-white" href="%1$s"><button class="mt-3 btn btn-info">%2$s</button></a>',
 			get_permalink( get_the_ID() ),
-			__( 'Read more', 'aquila' )
+			__( 'Continue Lendo', 'aquila' )
 		);
 	}
 

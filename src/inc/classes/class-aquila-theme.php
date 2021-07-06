@@ -99,7 +99,6 @@ class AQUILA_THEME {
 		/**
 		 * Register image sizes.
 		 */
-		add_image_size( 'featured-thumbnail', 350, 233, true );
 
 
 		// Add theme support for selective refresh for widgets.

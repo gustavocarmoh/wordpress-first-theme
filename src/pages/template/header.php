@@ -8,8 +8,7 @@
     <?php wp_head(); ?>
 
     <link rel="icon" href="<?= get_template_directory_uri() . '/assets/logo-ppd.png' ?>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/normalize.css' ?>" />
+   <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/normalize.css' ?>" />
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/header.css' ?>" />
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/' . $estiloPagina ?>">
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/footer.css' ?>" />

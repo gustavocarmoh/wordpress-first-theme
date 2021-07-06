@@ -7,7 +7,7 @@
     function pegandoTextosParaBanner() {
     
         $args = array(
-            'post_type' => 'banners',
+            'post_type' => 'alunos',
             'post_status' => 'publish',
             'posts_per_page' => 1
         );
@@ -30,7 +30,9 @@
             if($key !== 'texto_home_1' && $key !== 'texto_home_2'){
                 continue;
             }
-
+            if($key !== 'desc_1' && $key !== 'lattes_2'){
+                continue;
+            }
             update_post_meta(
                 $post_id,
                 '_'.$key,
@@ -49,7 +51,7 @@
             <input type="text" name="texto_home_1" style="width: 100%" value="<?= $texto_home_1 ?>"/>
             <br>
             <br>
-            <label for="texto_home_2">Informações</label>
+            <label for="texto_home_2">Descrição:</label>
             <input type="text" name="texto_home_2" style="width: 100%" value="<?= $texto_home_2 ?>"/>
         <?php
     }
@@ -57,16 +59,16 @@
     function ppd_home_metabox() {
         add_meta_box(
             'ppd_home_page_personalizada',
-            'Texto para a home',
+            'Informações do aluno',
             'ppd_funcao_callback_home',
-            'banners'
+            'alunos'
         );
     }
     add_action('add_meta_boxes', 'ppd_home_metabox');
 
     function ppd_home_page_personalizada() {
         register_post_type( 
-            'banners', 
+            'alunos', 
             array(
                 'labels' => array('name' => 'Alunos'),
                 'public' => true,
@@ -78,29 +80,58 @@
     }
     add_action('init', 'ppd_home_page_personalizada');
 
-    function ppd_registrando_taxonomia() {
-        register_taxonomy(
-            'artigo',
-            'article',
-            array(
-                'labels' => array('name' => 'Temas'),
-                'hierarchical' => true
-            )
-        );
-    }
-    add_action('init', 'ppd_registrando_taxonomia');
 
-    function ppd_tipo_post_artigo() {
-        register_post_type('article', array(
-            'labels' => array('name' => 'Artigo'),
+    function ppd_tipo_post_pesquisadores() {
+        register_post_type('pesquisador', array(
+            'labels' => array('name' => 'Pesquisadores'),
             'public' => true,
             'menu_position' => 0,
-            'supports' => array('title', 'editor', 'thumbnail'),
+            'supports' => array('title', 'thumbnail'),
             'menu_icon' => 'dashicons-welcome-write-blog'
         ));
     }
-    add_action('init', 'ppd_tipo_post_artigo');
+    add_action('init', 'ppd_tipo_post_pesquisadores');
    
+    
+    function ppd_pesquisador_metabox() {
+        add_meta_box(
+            'ppd_tipo_post_pesquisadores',
+            'Informações do pesquisador',
+            'ppd_funcao_callback_pesquisador',
+            'pesquisador'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_pesquisador_metabox');
+
+    function ppd_funcao_callback_pesquisador($post){
+
+        $desc_1 = get_post_meta($post->ID, '_desc_1', true);
+        $lattes_2 = get_post_meta($post->ID, '_lattes_2', true);
+        ?>
+            <label for="desc_1">Descrição:</label>
+            <input type="text" name="desc_1" style="width: 100%" value="<?= $desc_1 ?>"/>
+            <br>
+            <br>
+            <label for="lattes_2">Currículo Lattes:</label>
+            <input type="text" name="lattes_2" style="width: 100%" value="<?= $lattes_2 ?>"/>
+        <?php
+    }
+
+    function ppd_home_salvando_dados_metabox_2($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'desc_1' && $key !== 'lattes_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_2');
+/*
     function ppd_registrando_taxonomia_noticias() {
         register_taxonomy(
             'noticias',
@@ -123,7 +154,7 @@
         ));
     }
     add_action('init', 'ppd_tipo_post_noticias');
-
+*/
     function ppd_adicionando_recursos() {
         /*
              * Let WordPress manage the document title.
@@ -210,4 +241,53 @@
     }
     
     aquila_get_theme_instance();
+
+    function bootstrap_pagination( \WP_Query $wp_query = null, $echo = true, $params = [] ) {
+        if ( null === $wp_query ) {
+            global $wp_query;
+        }
+    
+        $add_args = [];
+    
+        //add query (GET) parameters to generated page URLs
+        /*if (isset($_GET[ 'sort' ])) {
+            $add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
+        }*/
+    
+        $pages = paginate_links( array_merge( [
+                'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+                'format'       => '?paged=%#%',
+                'current'      => max( 1, get_query_var( 'paged' ) ),
+                'total'        => $wp_query->max_num_pages,
+                'type'         => 'array',
+                'show_all'     => false,
+                'end_size'     => 3,
+                'mid_size'     => 1,
+                'prev_next'    => true,
+                'prev_text'    => __( '«' ),
+                'next_text'    => __( '»' ),
+                'add_args'     => $add_args,
+                'add_fragment' => ''
+            ], $params )
+        );
+    
+        if ( is_array( $pages ) ) {
+            //$current_page = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
+            $pagination = '<div class="pagination"><ul class="pagination justify-content-center">';
+    
+            foreach ( $pages as $page ) {
+                $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' . str_replace('page-numbers', 'page-link', $page) . '</li>';
+            }
+    
+            $pagination .= '</ul></div>';
+    
+            if ( $echo ) {
+                echo $pagination;
+            } else {
+                return $pagination;
+            }
+        }
+    
+        return null;
+    }
 ?>

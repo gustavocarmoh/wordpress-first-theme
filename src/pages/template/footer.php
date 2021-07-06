@@ -15,12 +15,12 @@
                     </h6>
                 </div>
                 <div class="logo">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/ufmg-logo.png' ?>" alt="UFMG" >
-                    <img src="<?php echo get_template_directory_uri() . '/assets/cedeplar-logo.png' ?>" alt="UFMG" >
-                    <img src="<?php echo get_template_directory_uri() . '/assets/face-logo.png' ?>" alt="UFMG" >
+                    <img src="<?php echo get_template_directory_uri() . '/assets/img/ufmg-logo.png' ?>" alt="UFMG" >
+                    <img src="<?php echo get_template_directory_uri() . '/assets/img/cedeplar-logo.png' ?>" alt="UFMG" >
+                    <img src="<?php echo get_template_directory_uri() . '/assets/img/face-logo.png' ?>" alt="UFMG" >
                 </div>
             </div>
-            <hr/>
+            <hr class="hr"/>
             <div class="footer-ppd">
                 <p class="container-ppd">&copy; <?php echo date("Y"); ?> - Todos os direito reservados a Políticas Públicas e Desenvolvimento</a>
             </div>
