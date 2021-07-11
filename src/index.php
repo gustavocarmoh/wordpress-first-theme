@@ -1,4 +1,5 @@
 <?php
+global $post;
 if (is_home() && ! is_front_page()):
     $estiloPagina = 'blog.css';  
     require_once get_template_directory() . '/pages/template/header.php';
@@ -6,11 +7,13 @@ if (is_home() && ! is_front_page()):
     $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
  
     $args = array(
-        'posts_per_page' => 5,
-        'category_name' => 'blog',
         'paged' => $paged,
     );
-    
+
+    $arg2 = array('category_name' => 'artigos');
+    $query = new WP_Query($arg2);
+
+
 ?>
 <div class="primary">
     <main id="main" class="site-main mt-5" role="main">
@@ -24,8 +27,8 @@ if (is_home() && ! is_front_page()):
                 <div class="row">
                     <?php
                     $index = 0;
-                    $no_of_columns = 3;               
-                    while (have_posts()): the_post();
+                    $no_of_columns = 1;             
+                    while ($query->have_posts()): $query->the_post();
                         if (0 === $index % $no_of_columns ) {                       
                     ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
@@ -49,10 +52,11 @@ if (is_home() && ! is_front_page()):
                 endif;
                 
             ?>
+            <?php  
+                echo bootstrap_pagination(new WP_Query( $args ));
+            ?>
         </div>
-         <?php  
-            echo bootstrap_pagination(new WP_Query( $args ));
-        ?>
+        
     </main>
 </div>
 <?php

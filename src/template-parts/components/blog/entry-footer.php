@@ -17,6 +17,7 @@ if ( empty( $article_terms ) || ! is_array( $article_terms ) ) {
 ?>
 
 <div class="entry-footer mt-4">
+
 	<?php
 	foreach ( $article_terms as $key => $article_term ) {
 		?>
@@ -28,4 +29,10 @@ if ( empty( $article_terms ) || ! is_array( $article_terms ) ) {
 		<?php
 	}
 	?>
+	<div class="row">
+		<hr style="width:40%">
+		<p class="text-dark" style="padding-left: 2px;padding-right:2px;"> Ultimos Posts </p> 
+		<hr style="width:40%">
+	</div>
+	
 </div>

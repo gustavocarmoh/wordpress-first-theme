@@ -37,7 +37,7 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 		);
 	} else {
 		printf(
-			'<h2 class="entry-title mb-3"><a class="text-dark" href="%1$s">%2$s</a></h2>',
+			'<div class="title-box  text-center"><h4 class="entry-title mb-3"><a class="text-orange" href="%1$s">%2$s</a></h4></div>',
 			esc_url( get_the_permalink() ),
 			wp_kses_post( get_the_title() )
 		);

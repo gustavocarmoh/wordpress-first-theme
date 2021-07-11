@@ -1,6 +1,6 @@
-.footer {
-  padding: 0%;
-  background-color: #fff;
+.rodape {
+  margin-top: -50%;
+  background-color: white;
 }
 
 .banner-logo-container {
@@ -30,7 +30,7 @@
 .texto-banner-dinamico-container {
   position: absolute;
   text-align: center;
-  margin-top: calc(40vh - 7rem);
+  margin-top: calc(40vh);
   width: 100%;
   height: 20%;
   display: flex;
@@ -45,8 +45,8 @@
   opacity: 0.6;
   /* CSS3 */
   position: absolute;
-  margin-top: calc(42.5vh - 7rem);
-  width: 100%;
+  margin-top: calc(42.5vh);
+  width: 100vw;
   height: 15%;
 }
 
@@ -57,12 +57,13 @@
   flex-direction: row;
   width: 100%;
 }
+
 .text-ppd {
   position: absolute;
   text-align: center;
-  margin-top: calc(46.5vh - 7rem);
-  width: 70%;
-  left: 15%;
+  margin-top: calc(46vh);
+
+  left: 40%;
 }
 
 .texto-banner {
@@ -82,10 +83,11 @@
 }
 .imagem-banner img {
   width: 100%;
+  height: 100%;
+
   position: absolute;
-  top: -165px;
   z-index: -1;
-  height: 100vh;
+
   background-color: #000000;
 }
 .imagem-banner:after {

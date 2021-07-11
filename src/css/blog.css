@@ -62,8 +62,8 @@ span.text-content {
 }
 
 .page-numbers.current > span {
-  background-color: #e2e2e2;
-  color: #fff;
+  background-color: white;
+  color: white;
 }
 
 .page-link {
@@ -78,14 +78,32 @@ span.text-content {
 }
 .page-link:hover {
   z-index: 2;
-  color: #fff !important;
+  color: white !important;
   text-decoration: none;
   background-color: #f3a955 !important;
-  border-color: #dee2e6;
+  border-color: white;
 }
 .page-item.active .page-link {
   z-index: 3;
-  color: #fff;
+  color: white !important;
   background-color: #f29a34 !important;
   border-color: white;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196f3;
+  padding: 10px;
+}
+.text-orange {
+  color: #f29a34 !important;
+}
+/*.title-box {
+  align-items: center;
+  align-content: center;
+  border-radius: 1px;
+  border-style: solid;
+  border-color: #f3a955;
+}*/

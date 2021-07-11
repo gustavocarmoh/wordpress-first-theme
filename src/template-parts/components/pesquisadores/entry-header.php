@@ -18,7 +18,7 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 	if ( $has_post_thumbnail ) {
 		?>
 		<div class="entry-image mb-3">
-			<a href="<?php echo esc_url( get_permalink() ); ?>">
+			<a>
 				<?php
 				the_post_custom_thumbnail(
 					$the_post_id,
@@ -38,23 +38,20 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 	// Title
 	if ( is_single() || is_page() ) {
 		printf(
-			'<h1 class="page-title card-title text-dark %1$s">%2$s</h1>',
+			'<h3 class="card-title text-dark %1$s">%2$s</h3>',
 			esc_attr( $heading_class ),
 			wp_kses_post( get_the_title() )
 		);
 	} else {
 		printf(
-			'<h2 class="entry-title mb-3"><a class="text-dark" href="%1$s">%2$s</a></h2>',
-			esc_url( get_the_permalink() ),
+			'<h5 class="entry-title mb-3"><a class="text-dark" href="%1$s">%2$s</a></h5>',
 			wp_kses_post( get_the_title() )
 		);
 	}
 
 	?>
-	<div class="card-body">
-    	<p class="card-text"><?php echo $desc ?></p>
+		<p class="card-text"><?php echo $desc ?></p>
 		<p class="card-text">Lattes: <?php echo $lattes ?></p>
-  	</div>
-</div>
+	</div>
 </div>
 </header>

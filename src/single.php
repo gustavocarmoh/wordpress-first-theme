@@ -5,9 +5,11 @@
 
 	<div id="primary">
 		<main id="main" class="site-main mt-5" role="main">
+			<!--
 			<div class="container-title">
                 <span class="text-title">Artigos</span>
             </div>
+-->
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-8 col-md-8 col-sm-12">

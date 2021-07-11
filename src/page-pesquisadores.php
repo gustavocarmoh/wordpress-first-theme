@@ -21,7 +21,7 @@
                     <div class="row">
                         <?php
                             $index = 0;
-                            $no_of_columns = 3;
+                            $no_of_columns = 1;
 
                             while ($query->have_posts()): $query->the_post();
                                 if (0 === $index % $no_of_columns ) { 
