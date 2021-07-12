@@ -43,4 +43,8 @@
              -->
         </nav>
     </div>
+    <?php if( is_page('contato') ){ ?>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/verif.js"></script>
+    <?php }?>
 </header>

@@ -1,61 +1,56 @@
 <?php
-    $estiloPagina = 'blog.css';
+    $estiloPagina = 'noticias.css';
     require_once get_template_directory() . '/pages/template/header.php';
-
-    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
- 
-    $args = array(
-        'paged' => $paged,
-    );
-
-    $arg2 = array('category_name' => 'blog');
-    $query = new WP_Query($arg2);
-
 ?>
-<div class="primary">
-    <main id="main" class="site-main mt-5" role="main">
-        <div class="container-title">
-            <span class="text-title"><?php single_post_title(); ?></span>
-        </div>
-        <div class="container">
+    <form action="#" class="container-ppd formulario-pesquisa-noticias">
+        <h2>Conheça nossos noticias</h2>
+        <select name="noticias" id="noticias">
+            <option value="">--Selecione--</option>
             <?php
-                if (have_posts()):
+            $paises = get_terms(array('taxonomy' => 'noticias'));
+            foreach ($paises as $pais):?>
+                <option value="<?= $pais->name ?>"
+                    <?= !empty($_GET['noticias']) && $_GET['noticias'] === $pais->name ? 'selected' : '' ?>><?= $pais->name ?>
+                </option>
+            <?php endforeach;
             ?>
-                <div class="row">
-                    <?php
-                    $index = 0;
-                    $no_of_columns = 1;             
-                    while ($query->have_posts()): $query->the_post();
-                        if (0 === $index % $no_of_columns ) {                       
-                    ?>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                    <?php
-                        }
-                        get_template_part('template-parts/content');
-                        $index++;
-
-                        if (0 !== $index && 0 === $index % $no_of_columns) {
-                    ?>
-                    </div>
-                    <?php
-                        }
-                    endwhile;
-                    ?>
-                </div>
-            <?php 
-            
-                else:
-                    get_template_part('template-parts/content-none');
-                endif;
-                
-            ?>
-            <?php  
-                echo bootstrap_pagination(new WP_Query( $args ));
-            ?>
-        </div>
-        
-    </main>
-</div>
+        </select>
+        <input type="submit" value="Pesquisar">
+    </form>
 <?php
+    if(!empty($_GET['noticias'])) {
+        $paisSelecionado = array(array(
+            'taxonomy' => 'noticias',
+            'field' => 'name',
+            'terms' => $_GET['noticias']
+        ));
+    }
+
+    $args = array(
+        'post_type' => 'news',
+        'tax_query' => !empty($_GET['noticias']) ? $paisSelecionado : ''
+    );
+    $query = new WP_Query($args);
+    if ($query->have_posts()):
+        echo '<main class="page-noticias">';
+            echo '<ul class="lista-noticias container-ppd">';
+            while ($query->have_posts()): $query->the_post();
+                echo '<div class="col-sm-3 noticias" >';
+                    echo '<div class="noticias-container">';
+                        echo '<div class="noticias-thumbnail">';
+                            the_post_thumbnail(array(340,250));
+                        echo '</div>';
+                        echo '<div class="noticias-title">';
+                            the_title('<p class="titulo-noticias">', '</p>');
+                        echo '</div>';
+                        echo '<div class="noticias-text">';
+                            the_content();
+                        echo '</div>';
+                    echo '</div>';  
+                echo '</div>';
+            endwhile;
+            echo '</ul>';
+        echo '</main>';
+    endif;
     require_once get_template_directory() . '/pages/template/footer.php';
 ?>

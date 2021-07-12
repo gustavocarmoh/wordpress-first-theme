@@ -10,7 +10,6 @@
 
     $query = new WP_Query($args);
 
-    
     if($query->have_posts()):
         ?>
             <main id="main" class="site-main mt-5" role="main">
@@ -26,7 +25,7 @@
                             while ($query->have_posts()): $query->the_post();
                                 if (0 === $index % $no_of_columns ) { 
                         ?>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
                             <?php
                                 }
                                 get_template_part('template-parts/content-others');

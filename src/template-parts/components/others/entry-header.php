@@ -4,26 +4,25 @@ $the_post_id   = get_the_ID();
 $hide_title    = get_post_meta( $the_post_id, '_hide_page_title', true );
 $heading_class = ( ! empty( $hide_title ) && 'yes' === $hide_title ) ? 'hide d-none' : '';
 
-$desc    = get_post_meta( $the_post_id, '_texto_home_2', true );
+$desc    = get_post_meta( $the_post_id, '_texto_home_1', true );
+$linkedin    = get_post_meta( $the_post_id, '_texto_home_2', true );
 
 $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 
 ?>
-<header class="card" style="width: 18rem;">
-<div class="card" style="width: 18rem;">
-
+<header class="card" style="width: 16rem;">
 	<?php
 	// Featured image
 	if ( $has_post_thumbnail ) {
 		?>
-		<div class="entry-image mb-3">
-			<a href="<?php echo esc_url( get_permalink() ); ?>">
+		<div class="entry-image">
+			<a>
 				<?php
 				the_post_custom_thumbnail(
 					$the_post_id,
 					'featured-thumbnail',
 					[
-						'sizes' => '(max-width: 286px) 286px, 180px',
+						'sizes' => '(max-width: 200px) 200px, 180px',
 						'class' => 'card-img-top size-featured-image'
 					]
 				)
@@ -37,21 +36,29 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 	// Title
 	if ( is_single() || is_page() ) {
 		printf(
-			'<h1 class="page-title card-title text-dark %1$s">%2$s</h1>',
+			'<h3 class="card-title text-dark %1$s">%2$s</h3>',
 			esc_attr( $heading_class ),
 			wp_kses_post( get_the_title() )
 		);
 	} else {
 		printf(
-			'<h2 class="entry-title mb-3"><a class="text-dark" href="%1$s">%2$s</a></h2>',
+			'<h5 class="entry-title mb-3"><a class="text-dark" href="%1$s">%2$s</a></h5>',
 			wp_kses_post( get_the_title() )
 		);
 	}
 
 	?>
-	<div class="card-body">
-    	<p class="card-text"><?php echo $desc ?></p>
-  	</div>
-</div>
-</div>
+		<p class="card-text"><?php echo $desc ?></p>
+		<div class="div">		
+			<?php
+				if ($linkedin !== 'http://localhost:8080/pesquisadores/') {
+			?>
+				<a href="<?php echo $linkedin ?>" target="_blank">
+					<img src="https://image.flaticon.com/icons/png/512/174/174857.png" width="30px" height="30px" alt="Linkedin"/>
+				</a>
+			<?php
+				}
+			?>
+		</div>
+	</div>
 </header>

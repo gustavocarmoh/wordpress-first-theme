@@ -6,25 +6,24 @@ $heading_class = ( ! empty( $hide_title ) && 'yes' === $hide_title ) ? 'hide d-n
 
 $desc    = get_post_meta( $the_post_id, '_desc_1', true );
 $lattes    = get_post_meta( $the_post_id, '_lattes_2', true );
+$linkedin   = get_post_meta( $the_post_id, '_linkedin_3', true );
 
 $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 
 ?>
-<header class="card" style="width: 18rem;">
-<div class="card" style="width: 18rem;">
-
+<header class="card" style="width: 16rem;">
 	<?php
 	// Featured image
 	if ( $has_post_thumbnail ) {
 		?>
-		<div class="entry-image mb-3">
+		<div class="entry-image">
 			<a>
 				<?php
 				the_post_custom_thumbnail(
 					$the_post_id,
 					'featured-thumbnail',
 					[
-						'sizes' => '(max-width: 286px) 286px, 180px',
+						'sizes' => '(max-width: 200px) 200px, 180px',
 						'class' => 'card-img-top size-featured-image'
 					]
 				)
@@ -51,7 +50,19 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 
 	?>
 		<p class="card-text"><?php echo $desc ?></p>
-		<p class="card-text">Lattes: <?php echo $lattes ?></p>
+		<div class="div">		
+			<a href="<?php echo $lattes ?>" target="_blank">
+				<img src="https://lh3.googleusercontent.com/proxy/SJMqk-LrVJWXcsEO8Lnn32iRaX-KDZVIUdZ7jcKARvBxjmKoCDflWNOSRi7Y0hD3Ga7wI2gGvAzQ6aW-l-Sgj0dBibevZE4EhPcpaZ7CglGCoB8yL0g-M3sxbV05h5tgwGy7kv5KrpYXJ0Nek0vo19DOEQ" width="40px" height="40px" alt="Lattes"/>
+			</a>
+			<?php
+				if ($linkedin !== 'http://localhost:8080/pesquisadores/') {
+			?>
+				<a href="<?php echo $linkedin ?>" target="_blank">
+					<img src="https://image.flaticon.com/icons/png/512/174/174857.png" width="30px" height="30px" alt="Linkedin"/>
+				</a>
+			<?php
+				}
+			?>
+		</div>
 	</div>
-</div>
 </header>

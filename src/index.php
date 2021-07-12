@@ -9,11 +9,6 @@ if (is_home() && ! is_front_page()):
     $args = array(
         'paged' => $paged,
     );
-
-    $arg2 = array('category_name' => 'artigos');
-    $query = new WP_Query($arg2);
-
-
 ?>
 <div class="primary">
     <main id="main" class="site-main mt-5" role="main">
@@ -28,7 +23,7 @@ if (is_home() && ! is_front_page()):
                     <?php
                     $index = 0;
                     $no_of_columns = 1;             
-                    while ($query->have_posts()): $query->the_post();
+                    while (have_posts()): the_post();
                         if (0 === $index % $no_of_columns ) {                       
                     ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">

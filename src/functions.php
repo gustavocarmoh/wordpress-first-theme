@@ -30,9 +30,6 @@
             if($key !== 'texto_home_1' && $key !== 'texto_home_2'){
                 continue;
             }
-            if($key !== 'desc_1' && $key !== 'lattes_2'){
-                continue;
-            }
             update_post_meta(
                 $post_id,
                 '_'.$key,
@@ -47,11 +44,11 @@
         $texto_home_1 = get_post_meta($post->ID, '_texto_home_1', true);
         $texto_home_2 = get_post_meta($post->ID, '_texto_home_2', true);
         ?>
-            <label for="texto_home_1">Nome completo do aluno:</label>
+            <label for="texto_home_1">Descrição:</label>
             <input type="text" name="texto_home_1" style="width: 100%" value="<?= $texto_home_1 ?>"/>
             <br>
             <br>
-            <label for="texto_home_2">Descrição:</label>
+            <label for="texto_home_2">Linkedin(url):</label>
             <input type="text" name="texto_home_2" style="width: 100%" value="<?= $texto_home_2 ?>"/>
         <?php
     }
@@ -107,19 +104,22 @@
 
         $desc_1 = get_post_meta($post->ID, '_desc_1', true);
         $lattes_2 = get_post_meta($post->ID, '_lattes_2', true);
+        $linkedin_3 = get_post_meta($post->ID, '_linkedin_3', true);
         ?>
             <label for="desc_1">Descrição:</label>
             <input type="text" name="desc_1" style="width: 100%" value="<?= $desc_1 ?>"/>
             <br>
             <br>
-            <label for="lattes_2">Currículo Lattes:</label>
+            <label for="lattes_2">Currículo Lattes(url):</label>
             <input type="text" name="lattes_2" style="width: 100%" value="<?= $lattes_2 ?>"/>
+            <label for="linkedin_3">Linkedin (url):</label>
+            <input type="text" name="linkedin_3" style="width: 100%" value="<?= $linkedin_3 ?>"/>
         <?php
     }
 
     function ppd_home_salvando_dados_metabox_2($post_id) {
         foreach($_POST as $key => $value) {
-            if($key !== 'desc_1' && $key !== 'lattes_2'){
+            if($key !== 'desc_1' && $key !== 'lattes_2' && $key !== 'linkedin_3'){
                 continue;
             }
 
@@ -131,30 +131,8 @@
         }
     }
     add_action('save_post', 'ppd_home_salvando_dados_metabox_2');
-/*
-    function ppd_registrando_taxonomia_noticias() {
-        register_taxonomy(
-            'noticias',
-            'news',
-            array(
-                'labels' => array('name' => 'Temas'),
-                'hierarchical' => true
-            )
-        );
-    }
-    add_action('init', 'ppd_registrando_taxonomia_noticias');
 
-    function ppd_tipo_post_noticias() {
-        register_post_type('news', array(
-            'labels' => array('name' => 'Noticias'),
-            'public' => true,
-            'menu_position' => 1,
-            'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-welcome-add-page'
-        ));
-    }
-    add_action('init', 'ppd_tipo_post_noticias');
-*/
+
     function ppd_adicionando_recursos() {
         /*
              * Let WordPress manage the document title.

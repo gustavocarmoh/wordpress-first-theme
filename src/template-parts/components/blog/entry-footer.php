@@ -19,7 +19,7 @@ if ( empty( $article_terms ) || ! is_array( $article_terms ) ) {
 <div class="entry-footer mt-4">
 
 	<?php
-	foreach ( $article_terms as $key => $article_term ) {
+	/*foreach ( $article_terms as $key => $article_term ) {
 		?>
 		<a class="entry-footer-link text-black-50" href="<?php echo esc_url( get_term_link( $article_term ) ); ?>">
 			<button class="btn border border-secondary mb-2 mr-2">
@@ -27,7 +27,7 @@ if ( empty( $article_terms ) || ! is_array( $article_terms ) ) {
 			</button>
 		</a>
 		<?php
-	}
+	}*/
 	?>
 	<div class="row">
 		<hr style="width:40%">
