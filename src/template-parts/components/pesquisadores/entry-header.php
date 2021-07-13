@@ -6,7 +6,7 @@ $heading_class = ( ! empty( $hide_title ) && 'yes' === $hide_title ) ? 'hide d-n
 
 $desc    = get_post_meta( $the_post_id, '_desc_1', true );
 $lattes    = get_post_meta( $the_post_id, '_lattes_2', true );
-$linkedin   = get_post_meta( $the_post_id, '_linkedin_3', true );
+$ufmg   = get_post_meta( $the_post_id, '_ufmg_4', true );
 
 $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 
@@ -50,18 +50,22 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 
 	?>
 		<p class="card-text"><?php echo $desc ?></p>
-		<div class="div">		
-			<a href="<?php echo $lattes ?>" target="_blank">
-				<img src="https://lh3.googleusercontent.com/proxy/SJMqk-LrVJWXcsEO8Lnn32iRaX-KDZVIUdZ7jcKARvBxjmKoCDflWNOSRi7Y0hD3Ga7wI2gGvAzQ6aW-l-Sgj0dBibevZE4EhPcpaZ7CglGCoB8yL0g-M3sxbV05h5tgwGy7kv5KrpYXJ0Nek0vo19DOEQ" width="40px" height="40px" alt="Lattes"/>
+		<div class="div">
+			<?php
+				if ($ufmg !== '') {
+			?>
+			<a href="<?php echo $ufmg ?>" target="_blank">
+				<img src="http://static1.squarespace.com/static/5af3f84a4eddec846552ea29/5b13fcb20e2e7280eec3ce6c/60655fbc9f6b291289fc2cd2/1617257132658/ufmg.jpg?format=1500w" width="25px" height="25px" alt="UFMG"/>
 			</a>
 			<?php
-				if ($linkedin !== 'http://localhost:8080/pesquisadores/') {
-			?>
-				<a href="<?php echo $linkedin ?>" target="_blank">
-					<img src="https://image.flaticon.com/icons/png/512/174/174857.png" width="30px" height="30px" alt="Linkedin"/>
-				</a>
-			<?php
 				}
+				if ($lattes !== '') {
+			?>	
+			<a href="<?php echo $lattes ?>" target="_blank">
+				<img src="https://www.pngix.com/pngfile/big/443-4438884_link-for-a-possible-model-emblem-hd-png.png" width="20px" height="20px" alt="Lattes"/>
+			</a>
+			<?php
+				}	
 			?>
 		</div>
 	</div>

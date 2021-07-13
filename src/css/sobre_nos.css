@@ -16,3 +16,7 @@ main {
   margin: 0 3rem;
   text-align: justify;
 }
+
+.logo-footer {
+  width: 120px !important;
+}

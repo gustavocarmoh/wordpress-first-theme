@@ -1,14 +1,12 @@
 <?php
-$estiloPagina = 'home.css';
-require_once get_template_directory() . '/pages/template/header.php';
-
+    $estiloPagina = 'home.css';
+    require_once get_template_directory() . '/pages/template/header.php';
 ?>
     <main>
         <div class="imagem-banner">
             <?php 
                 the_post_thumbnail();
             ?>
-            
         </div>
         <div id="background"></div>
         <div class="texto-banner-dinamico-container">
@@ -16,7 +14,6 @@ require_once get_template_directory() . '/pages/template/header.php';
                 <img class="banner-logo" src="<?php echo get_template_directory_uri() . '/assets/img/cedeplar-logo.png' ?>" alt="UFMG" >
                 <div class="text-container">
                     <img class="icon-banner" src="<?php echo get_template_directory_uri() . '/assets/img/logo-ppd.png' ?>" alt="UFMG" >
-
                 </div>              
             </div>
         </div>
@@ -28,7 +25,3 @@ require_once get_template_directory() . '/pages/template/header.php';
             </h4>
         </div>
     </main>
-<?php
-#require_once get_template_directory() . '/pages/template/footer.php';
-
-?>

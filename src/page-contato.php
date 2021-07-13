@@ -49,7 +49,7 @@ require_once get_template_directory() . '/pages/template/header.php';
 if(have_posts()):
     while(have_posts()): the_post();
     ?>
-    <main>
+    <main id="main" class="site-main mt-5" role="main">
         <div class="container-title">
             <span class="text-title"><?php single_post_title(); ?></span>
         </div>
@@ -75,7 +75,7 @@ if(have_posts()):
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Sua mensagem:</label>
-                        <textarea class="form-control" name="comments" id="commentsText" rows="20" cols="30"></textarea>
+                        <textarea class="form-control" name="comments" id="commentsText" rows="8" cols="30"></textarea>
                     </div>
                     <button type="button" class="btn btn-lg btn-block" name="submitted" id="submitted">Enviar sua mensagem</button>
                 </form>

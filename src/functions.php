@@ -48,7 +48,7 @@
             <input type="text" name="texto_home_1" style="width: 100%" value="<?= $texto_home_1 ?>"/>
             <br>
             <br>
-            <label for="texto_home_2">Linkedin(url):</label>
+            <label for="texto_home_2">Lattes(url):</label>
             <input type="text" name="texto_home_2" style="width: 100%" value="<?= $texto_home_2 ?>"/>
         <?php
     }
@@ -104,22 +104,21 @@
 
         $desc_1 = get_post_meta($post->ID, '_desc_1', true);
         $lattes_2 = get_post_meta($post->ID, '_lattes_2', true);
-        $linkedin_3 = get_post_meta($post->ID, '_linkedin_3', true);
+        $ufmg_4 = get_post_meta($post->ID, '_ufmg_4', true);
         ?>
             <label for="desc_1">Descrição:</label>
             <input type="text" name="desc_1" style="width: 100%" value="<?= $desc_1 ?>"/>
             <br>
-            <br>
             <label for="lattes_2">Currículo Lattes(url):</label>
             <input type="text" name="lattes_2" style="width: 100%" value="<?= $lattes_2 ?>"/>
-            <label for="linkedin_3">Linkedin (url):</label>
-            <input type="text" name="linkedin_3" style="width: 100%" value="<?= $linkedin_3 ?>"/>
+            <label for="ufmg_4">Perfil UFMG (url):</label>
+            <input type="text" name="ufmg_4" style="width: 100%" value="<?= $ufmg_4 ?>"/>
         <?php
     }
 
     function ppd_home_salvando_dados_metabox_2($post_id) {
         foreach($_POST as $key => $value) {
-            if($key !== 'desc_1' && $key !== 'lattes_2' && $key !== 'linkedin_3'){
+            if($key !== 'desc_1' && $key !== 'lattes_2' && $key !== 'linkedin_3' && $key !== 'ufmg_4'){
                 continue;
             }
 
@@ -170,6 +169,29 @@
     }
     add_action('init', 'ppd_menu');
 
+
+    function ppd_registrando_taxonomia_noticias() {
+        register_taxonomy(
+            'noticias',
+            'news',
+            array(
+                'labels' => array('name' => 'Temas'),
+                'hierarchical' => true
+            )
+        );
+    }
+    add_action('init', 'ppd_registrando_taxonomia_noticias');
+
+    function ppd_tipo_post_noticias() {
+        register_post_type('news', array(
+            'labels' => array('name' => 'Noticias'),
+            'public' => true,
+            'menu_position' => 1,
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'menu_icon' => 'dashicons-welcome-add-page'
+        ));
+    }
+    add_action('init', 'ppd_tipo_post_noticias');
 
     if ( ! defined( 'AQUILA_DIR_PATH' ) ) {
         define( 'AQUILA_DIR_PATH', untrailingslashit( get_template_directory() ) );
@@ -242,8 +264,8 @@
                 'end_size'     => 3,
                 'mid_size'     => 1,
                 'prev_next'    => true,
-                'prev_text'    => __( '«' ),
-                'next_text'    => __( '»' ),
+                'prev_text'    => __( '« Prev' ),
+                'next_text'    => __( 'Next »' ),
                 'add_args'     => $add_args,
                 'add_fragment' => ''
             ], $params )
@@ -251,7 +273,7 @@
     
         if ( is_array( $pages ) ) {
             //$current_page = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
-            $pagination = '<div class="pagination"><ul class="pagination justify-content-center">';
+            $pagination = '<div class="pagination"><ul class="pagination">';
     
             foreach ( $pages as $page ) {
                 $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' . str_replace('page-numbers', 'page-link', $page) . '</li>';

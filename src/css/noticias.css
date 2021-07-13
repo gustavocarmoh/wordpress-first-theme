@@ -1,6 +1,6 @@
 .footer {
   padding: 0%;
-  background-color: #d9d9d9;
+  background-color: #f3f3f3;
 }
 
 span.text-title {
@@ -55,10 +55,6 @@ span.text-content {
 
 .container {
   padding-top: 2%;
-}
-
-.entry-header {
-  color: pink;
 }
 
 .page-numbers.current > span {

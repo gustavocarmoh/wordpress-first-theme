@@ -4,13 +4,13 @@
     $args = array(
         'post_type' => 'pesquisador',
         'post_status' => 'publish',
-        'orderby' => 'title',
         'order' => 'ASC',
+        'orderby' => 'ID',
+        'posts_per_page' => -1
     );
 
     $query = new WP_Query($args);
 
-    
     if($query->have_posts()):
         ?>
             <main id="main" class="site-main mt-5" role="main">

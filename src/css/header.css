@@ -58,7 +58,6 @@ main {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 7rem;
 }
 .site-header nav #menu-principal {
   display: -webkit-box;
@@ -83,7 +82,6 @@ main {
   padding-bottom: 5px;
 }
 .site-header nav #menu-principal li {
-  margin-right: 2rem;
 }
 .site-header nav #menu-principal li:last-child {
   margin-right: 0;

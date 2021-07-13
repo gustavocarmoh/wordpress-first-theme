@@ -1,6 +1,6 @@
 .footer {
   padding: 0%;
-  background-color: #fff;
+  background-color: #f3f3f3;
 }
 
 .banner-logo-container {
@@ -56,24 +56,6 @@
   flex-direction: row;
   width: 100%;
 }
-.text-ppd {
-  position: absolute;
-  text-align: center;
-  margin-top: calc(32.5vh);
-  width: 70%;
-  left: 22.5%;
-}
-
-.texto-banner {
-  color: black;
-
-  font-size: 3rem;
-  line-height: 2.8rem;
-
-  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
-  font-style: normal;
-  font-weight: 900;
-}
 
 .imagem-banner {
   background: -o-linear-gradient(135deg, #000000 0%, #ffffff 74%);
@@ -113,4 +95,80 @@
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.65) 100%
   );
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 0rem !important;
+}
+
+@media only screen and (min-device-width: 1551px) and (max-device-width: 1920px) {
+  /* insert styles here */
+  .text-ppd {
+    position: absolute;
+    text-align: center;
+    margin-top: calc(32.5vh);
+    width: 70%;
+    left: 22.5%;
+  }
+
+  .texto-banner {
+    color: black;
+
+    font-size: 3rem;
+    line-height: 2.8rem;
+
+    font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+  }
+}
+
+@media only screen and (min-device-width: 720px) and (max-device-width: 1280px) {
+  /* insert styles here */
+  .text-ppd {
+    position: absolute;
+    text-align: center;
+    margin-top: calc(28.5vh);
+    width: 70%;
+    left: 22.5%;
+  }
+
+  .texto-banner {
+    color: black;
+
+    font-size: 2.2rem;
+    line-height: 2rem;
+
+    font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+  }
+}
+
+@media only screen and (min-device-width: 1281px) and (max-device-width: 1550px) {
+  /* insert styles here */
+  .text-ppd {
+    position: absolute;
+    text-align: center;
+    margin-top: calc(29.5vh);
+    width: 70%;
+    left: 22.5%;
+  }
+
+  .texto-banner {
+    color: black;
+
+    font-size: 2.5rem;
+    line-height: 2.2rem;
+
+    font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+  }
+}
+
+.site-header {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }

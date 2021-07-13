@@ -1,12 +1,13 @@
 .footer {
+  margin-top: 2%;
   padding: 0%;
-  background-color: #fff;
+  background-color: #d9d9d9;
 }
 
 span.text-title {
   color: white;
-  font-size: 4em;
-  font-weight: 900;
+  font-size: 3em;
+  font-weight: 300;
 }
 
 span.text-content {
@@ -51,4 +52,17 @@ span.text-content {
 .btn-lg {
   color: white;
   background-color: #f29a34;
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 1rem !important;
+}
+
+.logo-footer {
+  width: 120px !important;
+}
+
+.site-header {
+  padding-top: 1rem !important;
 }

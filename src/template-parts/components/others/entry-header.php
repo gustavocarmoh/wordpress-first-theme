@@ -51,10 +51,10 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 		<p class="card-text"><?php echo $desc ?></p>
 		<div class="div">		
 			<?php
-				if ($linkedin !== 'http://localhost:8080/pesquisadores/') {
+				if ($linkedin !== '') {
 			?>
 				<a href="<?php echo $linkedin ?>" target="_blank">
-					<img src="https://image.flaticon.com/icons/png/512/174/174857.png" width="30px" height="30px" alt="Linkedin"/>
+					<img src="https://www.pngix.com/pngfile/big/443-4438884_link-for-a-possible-model-emblem-hd-png.png" width="20px" height="20px" alt="Lattes"/>
 				</a>
 			<?php
 				}

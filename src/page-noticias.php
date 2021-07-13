@@ -2,21 +2,6 @@
     $estiloPagina = 'noticias.css';
     require_once get_template_directory() . '/pages/template/header.php';
 ?>
-    <form action="#" class="container-ppd formulario-pesquisa-noticias">
-        <h2>Conheça nossos noticias</h2>
-        <select name="noticias" id="noticias">
-            <option value="">--Selecione--</option>
-            <?php
-            $paises = get_terms(array('taxonomy' => 'noticias'));
-            foreach ($paises as $pais):?>
-                <option value="<?= $pais->name ?>"
-                    <?= !empty($_GET['noticias']) && $_GET['noticias'] === $pais->name ? 'selected' : '' ?>><?= $pais->name ?>
-                </option>
-            <?php endforeach;
-            ?>
-        </select>
-        <input type="submit" value="Pesquisar">
-    </form>
 <?php
     if(!empty($_GET['noticias'])) {
         $paisSelecionado = array(array(
@@ -32,8 +17,13 @@
     );
     $query = new WP_Query($args);
     if ($query->have_posts()):
-        echo '<main class="page-noticias">';
-            echo '<ul class="lista-noticias container-ppd">';
+        echo '<main id="main" class="site-main mt-5" role="main">';
+        ?>
+        <div class="container-title">
+            <span class="text-title"><?php single_post_title(); ?></span>
+        </div>
+        <?php
+            echo '<ul class="container">';
             while ($query->have_posts()): $query->the_post();
                 echo '<div class="col-sm-3 noticias" >';
                     echo '<div class="noticias-container">';

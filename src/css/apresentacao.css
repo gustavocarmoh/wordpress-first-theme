@@ -1,6 +1,7 @@
 .footer {
   padding: 0%;
-  background-color: #fff;
+  margin-top: 10%;
+  background-color: #d9d9d9;
 }
 
 span.text-title {
@@ -62,4 +63,18 @@ span.text-content {
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.8) 100%
   );
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 0rem !important;
+}
+
+.site-header {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.logo-footer {
+  width: 120px !important;
 }

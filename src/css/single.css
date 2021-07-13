@@ -1,6 +1,6 @@
 .footer {
   padding: 0%;
-  background-color: #fff;
+  background-color: #f3f3f3;
 }
 
 span.text-title {
@@ -59,4 +59,13 @@ span.text-content {
 
 .entry-header {
   color: pink;
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 0rem !important;
+}
+
+.logo-footer {
+  width: 120px !important;
 }
