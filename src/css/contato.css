@@ -21,7 +21,9 @@ span.text-content {
 
 .container-title {
   padding-left: 5%;
-  background-color: #f29a34;
+  background-color: #d86018;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .container-ppd-body {
@@ -51,7 +53,7 @@ span.text-content {
 
 .btn-lg {
   color: white;
-  background-color: #f29a34;
+  background-color: #d86018;
 }
 
 .mt-5,

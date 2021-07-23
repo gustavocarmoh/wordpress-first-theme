@@ -53,13 +53,7 @@
 						get_template_part( 'template-parts/components/posts-carousel' );
 					?>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-12">
-					<div class="card">
-					<div class="card-body">
-						<?php get_sidebar(); ?>
-					</div>
-					</div>
-				</div>
+				
 			</div>
 		</main>
 	</div>

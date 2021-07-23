@@ -107,20 +107,20 @@
   .text-ppd {
     position: absolute;
     text-align: center;
-    margin-top: calc(32.5vh);
+    margin-top: calc(31.5vh);
     width: 70%;
     left: 22.5%;
   }
 
   .texto-banner {
-    color: black;
+    color: #001e62;
 
     font-size: 3rem;
-    line-height: 2.8rem;
+    line-height: 3.2rem;
 
     font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
     font-style: normal;
-    font-weight: 900;
+    font-weight: 600;
   }
 }
 
@@ -129,20 +129,20 @@
   .text-ppd {
     position: absolute;
     text-align: center;
-    margin-top: calc(28.5vh);
+    margin-top: calc(25.5vh);
     width: 70%;
     left: 22.5%;
   }
 
   .texto-banner {
-    color: black;
+    color: #001e62;
 
-    font-size: 2.2rem;
-    line-height: 2rem;
+    font-size: 2rem;
+    line-height: 2.2rem;
 
     font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
     font-style: normal;
-    font-weight: 900;
+    font-weight: 600;
   }
 }
 
@@ -151,20 +151,20 @@
   .text-ppd {
     position: absolute;
     text-align: center;
-    margin-top: calc(29.5vh);
+    margin-top: calc(21.5vh);
     width: 70%;
     left: 22.5%;
   }
 
   .texto-banner {
-    color: black;
+    color: #001e62;
 
-    font-size: 2.5rem;
-    line-height: 2.2rem;
+    font-size: 1.8rem;
+    line-height: 2rem;
 
     font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
     font-style: normal;
-    font-weight: 900;
+    font-weight: 600;
   }
 }
 

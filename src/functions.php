@@ -53,6 +53,15 @@
         <?php
     }
 
+    function ppd_funcao_callback_publicacao($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
     function ppd_home_metabox() {
         add_meta_box(
             'ppd_home_page_personalizada',
@@ -62,6 +71,45 @@
         );
     }
     add_action('add_meta_boxes', 'ppd_home_metabox');
+
+    function ppd_publicacao_metabox() {
+        add_meta_box(
+            'pd_page_publicacao',
+            'Publicações',
+            'ppd_funcao_callback_publicacao',
+            'publicacao'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_publicacao_metabox');
+
+    function ppd_page_publicacao() {
+        register_post_type( 
+            'publicacao', 
+            array(
+                'labels' => array('name' => 'Artigos de jornal'),
+                'public' => true,
+                'menu_position' => 4,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_publicacao');
+
+    function ppd_home_salvando_dados_metabox_3($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_3');
 
     function ppd_home_page_personalizada() {
         register_post_type( 
@@ -77,19 +125,17 @@
     }
     add_action('init', 'ppd_home_page_personalizada');
 
-
     function ppd_tipo_post_pesquisadores() {
         register_post_type('pesquisador', array(
             'labels' => array('name' => 'Pesquisadores'),
             'public' => true,
-            'menu_position' => 0,
+            'menu_position' => 1,
             'supports' => array('title', 'thumbnail'),
-            'menu_icon' => 'dashicons-welcome-write-blog'
+            'menu_icon' => 'dashicons-admin-users'
         ));
     }
     add_action('init', 'ppd_tipo_post_pesquisadores');
-   
-    
+      
     function ppd_pesquisador_metabox() {
         add_meta_box(
             'ppd_tipo_post_pesquisadores',
@@ -168,30 +214,6 @@
         ) );
     }
     add_action('init', 'ppd_menu');
-
-
-    function ppd_registrando_taxonomia_noticias() {
-        register_taxonomy(
-            'noticias',
-            'news',
-            array(
-                'labels' => array('name' => 'Temas'),
-                'hierarchical' => true
-            )
-        );
-    }
-    add_action('init', 'ppd_registrando_taxonomia_noticias');
-
-    function ppd_tipo_post_noticias() {
-        register_post_type('news', array(
-            'labels' => array('name' => 'Noticias'),
-            'public' => true,
-            'menu_position' => 1,
-            'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-welcome-add-page'
-        ));
-    }
-    add_action('init', 'ppd_tipo_post_noticias');
 
     if ( ! defined( 'AQUILA_DIR_PATH' ) ) {
         define( 'AQUILA_DIR_PATH', untrailingslashit( get_template_directory() ) );
@@ -290,4 +312,151 @@
     
         return null;
     }
+
+    /* Conjuntura */
+    function ppd_funcao_callback_conjuntura($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
+    function ppd_conjuntura_metabox() {
+        add_meta_box(
+            'pd_page_conjuntura',
+            'Boletins de conjuntura',
+            'ppd_funcao_callback_conjuntura',
+            'conjuntura'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_conjuntura_metabox');
+
+    function ppd_page_conjuntura() {
+        register_post_type( 
+            'conjuntura', 
+            array(
+                'labels' => array('name' => 'Boletins de conjuntura'),
+                'public' => true,
+                'menu_position' => 7,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_conjuntura');
+
+    function ppd_home_salvando_dados_metabox_conjuntura($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_conjuntura');
+
+    /* Notas técnicas */
+    function ppd_funcao_callback_notas($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
+    function ppd_notas_metabox() {
+        add_meta_box(
+            'pd_page_notas',
+            'Notas técnicas',
+            'ppd_funcao_callback_notas',
+            'notas'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_notas_metabox');
+
+    function ppd_page_notas() {
+        register_post_type( 
+            'notas', 
+            array(
+                'labels' => array('name' => 'Notas técnicas'),
+                'public' => true,
+                'menu_position' => 5,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_notas');
+
+    function ppd_home_salvando_dados_metabox_notas($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_notas');
+    
+    /* Relatórios de previsão */
+    function ppd_funcao_callback_previsao($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
+    function ppd_previsao_metabox() {
+        add_meta_box(
+            'pd_page_previsao',
+            'Relatórios de previsão',
+            'ppd_funcao_callback_previsao',
+            'previsao'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_previsao_metabox');
+
+    function ppd_page_previsao() {
+        register_post_type( 
+            'previsao', 
+            array(
+                'labels' => array('name' => 'Relatórios de previsão'),
+                'public' => true,
+                'menu_position' => 6,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_previsao');
+
+    function ppd_home_salvando_dados_metabox_previsao($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_previsao');
 ?>

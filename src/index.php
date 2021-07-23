@@ -20,6 +20,7 @@ if (is_home() && ! is_front_page()):
                 if (have_posts()):
             ?>
                 <div class="row">
+                    <div class="col-8 row">
                     <?php
                     $index = 0;
                     $no_of_columns = 1;             
@@ -39,7 +40,16 @@ if (is_home() && ! is_front_page()):
                         }
                     endwhile;
                     ?>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <?php get_sidebar(); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
             <?php 
             
                 else:

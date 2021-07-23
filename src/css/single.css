@@ -6,7 +6,7 @@
 span.text-title {
   color: white;
   font-size: 4em;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 span.text-content {
@@ -20,7 +20,9 @@ span.text-content {
 
 .container-title {
   padding-left: 5%;
-  background-color: #f29a34;
+  background-color: #d86018;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
 }
 
 .container-ppd-body {
@@ -50,15 +52,11 @@ span.text-content {
 
 .btn-lg {
   color: white;
-  background-color: #f29a34;
+  background-color: #d86018;
 }
 
 .container {
   padding-top: 2%;
-}
-
-.entry-header {
-  color: pink;
 }
 
 .mt-5,

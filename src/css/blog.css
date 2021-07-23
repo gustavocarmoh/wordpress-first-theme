@@ -20,7 +20,9 @@ span.text-content {
 
 .container-title {
   padding-left: 5%;
-  background-color: #f29a34;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: #d86018;
 }
 
 .container-ppd-body {
@@ -50,15 +52,11 @@ span.text-content {
 
 .btn-lg {
   color: white;
-  background-color: #f29a34;
+  background-color: #d86018;
 }
 
 .container {
   padding-top: 2%;
-}
-
-.entry-header {
-  color: pink;
 }
 
 .page-numbers.current > span {
@@ -72,21 +70,21 @@ span.text-content {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #f29a34 !important;
+  color: #d86018 !important;
   background-color: white !important;
-  border: 1px solid #f29a34 !important;
+  border: 1px solid #d86018 !important;
 }
 .page-link:hover {
   z-index: 2;
   color: white !important;
   text-decoration: none;
-  background-color: #f3a955 !important;
+  background-color: #d86018 !important;
   border-color: white;
 }
 .page-item.active .page-link {
   z-index: 3;
   color: white !important;
-  background-color: #f29a34 !important;
+  background-color: #d86018 !important;
   border-color: white;
 }
 
@@ -98,7 +96,7 @@ span.text-content {
   padding: 10px;
 }
 .text-orange {
-  color: #f29a34 !important;
+  color: #d86018 !important;
 }
 /*.title-box {
   align-items: center;
@@ -115,4 +113,8 @@ span.text-content {
 
 .logo-footer {
   width: 120px !important;
+}
+
+.search-field {
+  width: 200px !important;
 }
