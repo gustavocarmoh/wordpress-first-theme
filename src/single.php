@@ -7,7 +7,7 @@
 		<main id="main" class="site-main mt-5" role="main">
 			
 			<div class="container-title">
-                <span class="text-title">Artigos</span>
+                <span class="text-title"><?php single_post_title(); ?></span>
             </div>
 			<div class="container">
 				<div class="row">

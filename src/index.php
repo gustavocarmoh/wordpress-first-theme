@@ -5,6 +5,7 @@ if (is_home() && ! is_front_page()):
     require_once get_template_directory() . '/pages/template/header.php';
 
     $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+    
  
     $args = array(
         'paged' => $paged,

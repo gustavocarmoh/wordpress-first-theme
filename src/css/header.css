@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Glegoo");
+
 * {
-  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Glegoo";
   font-style: normal;
   font-weight: normal;
 }
@@ -45,9 +47,6 @@ main {
   flex: 1;
 }
 
-.site-header {
-  background-color: #fff;
-}
 .site-header div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,7 +72,7 @@ main {
 
   /* Text / Gray 900 */
 
-  color: #18191f;
+  color: #fc992c;
 
   font-size: 1.2em;
 }

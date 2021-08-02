@@ -2,7 +2,7 @@
     $estiloPagina = 'blog.css';
     require_once get_template_directory() . '/pages/template/header.php';
     $args = array(
-        'post_type' => 'publicacao',
+        'post_type' => 'midia',
         'post_status' => 'publish',
         'order' => 'ASC',
         'orderby' => 'ID',

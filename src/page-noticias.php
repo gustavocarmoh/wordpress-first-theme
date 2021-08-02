@@ -1,46 +1,52 @@
 <?php
-    $estiloPagina = 'noticias.css';
+    $estiloPagina = 'blog.css';
     require_once get_template_directory() . '/pages/template/header.php';
-?>
-<?php
-    if(!empty($_GET['noticias'])) {
-        $paisSelecionado = array(array(
-            'taxonomy' => 'noticias',
-            'field' => 'name',
-            'terms' => $_GET['noticias']
-        ));
-    }
-
     $args = array(
-        'post_type' => 'news',
-        'tax_query' => !empty($_GET['noticias']) ? $paisSelecionado : ''
+        'post_type' => 'noticias',
+        'post_status' => 'publish',
+        'order' => 'ASC',
+        'orderby' => 'ID',
+        'posts_per_page' => -1
     );
+
     $query = new WP_Query($args);
-    if ($query->have_posts()):
-        echo '<main id="main" class="site-main mt-5" role="main">';
+
+    if($query->have_posts()):
         ?>
-        <div class="container-title">
-            <span class="text-title"><?php single_post_title(); ?></span>
-        </div>
-        <?php
-            echo '<ul class="container">';
-            while ($query->have_posts()): $query->the_post();
-                echo '<div class="col-sm-3 noticias" >';
-                    echo '<div class="noticias-container">';
-                        echo '<div class="noticias-thumbnail">';
-                            the_post_thumbnail(array(340,250));
-                        echo '</div>';
-                        echo '<div class="noticias-title">';
-                            the_title('<p class="titulo-noticias">', '</p>');
-                        echo '</div>';
-                        echo '<div class="noticias-text">';
-                            the_content();
-                        echo '</div>';
-                    echo '</div>';  
-                echo '</div>';
-            endwhile;
-            echo '</ul>';
-        echo '</main>';
-    endif;
+            <main id="main" class="site-main mt-5" role="main">
+                <div class="container-title">
+                    <span class="text-title"><?php single_post_title(); ?></span>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <?php
+                            $index = 0;
+                            $no_of_columns = 1;
+
+                            while ($query->have_posts()): $query->the_post();
+                                if (0 === $index % $no_of_columns ) { 
+                        ?>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <?php
+                                }
+                                get_template_part('template-parts/content-publicacao');
+                                $index++;
+
+                                if (0 !== $index && 0 === $index % $no_of_columns) {
+                            ?>
+                        </div>
+                        <?php
+                            }
+                        endwhile;
+                        ?>
+                    </div>
+                    <?php
+                        else:
+                            get_template_part('template-parts/content-none');
+                        endif;
+                    ?>
+                </div>
+            </main>
+<?php
     require_once get_template_directory() . '/pages/template/footer.php';
 ?>

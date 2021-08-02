@@ -53,7 +53,7 @@
         <?php
     }
 
-    function ppd_funcao_callback_publicacao($post){
+    function ppd_funcao_callback_midia($post){
 
         $url_2 = get_post_meta($post->ID, '_url_2', true);
         ?>
@@ -72,21 +72,23 @@
     }
     add_action('add_meta_boxes', 'ppd_home_metabox');
 
-    function ppd_publicacao_metabox() {
+
+
+    function ppd_noticia_metabox() {
         add_meta_box(
-            'pd_page_publicacao',
+            'pd_page_noticias',
             'Publicações',
-            'ppd_funcao_callback_publicacao',
-            'publicacao'
+            'ppd_funcao_callback_noticia',
+            'noticia'
         );
     }
-    add_action('add_meta_boxes', 'ppd_publicacao_metabox');
+    add_action('add_meta_boxes', 'ppd_noticia_metabox');
 
-    function ppd_page_publicacao() {
+    function ppd_page_noticia() {
         register_post_type( 
-            'publicacao', 
+            'noticia', 
             array(
-                'labels' => array('name' => 'Artigos de jornal'),
+                'labels' => array('name' => 'Notícias'),
                 'public' => true,
                 'menu_position' => 4,
                 'menu_icon' => 'dashicons-welcome-write-blog',
@@ -94,7 +96,31 @@
             )
         );
     }
-    add_action('init', 'ppd_page_publicacao');
+    add_action('init', 'ppd_page_noticia');
+
+    function ppd_midia_metabox() {
+        add_meta_box(
+            'pd_page_midia',
+            'Publicações',
+            'ppd_funcao_callback_midia',
+            'midia'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_midia_metabox');
+
+    function ppd_page_midia() {
+        register_post_type( 
+            'midia', 
+            array(
+                'labels' => array('name' => 'Vídeos'),
+                'public' => true,
+                'menu_position' => 4,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_midia');
 
     function ppd_home_salvando_dados_metabox_3($post_id) {
         foreach($_POST as $key => $value) {
@@ -176,7 +202,6 @@
         }
     }
     add_action('save_post', 'ppd_home_salvando_dados_metabox_2');
-
 
     function ppd_adicionando_recursos() {
         /*

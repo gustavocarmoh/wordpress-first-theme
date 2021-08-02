@@ -1,6 +1,6 @@
 .footer footer {
   padding-top: 5%;
-  background-color: #d9d9d9;
+  background-color: #2e3949;
 }
 
 .hr {
@@ -41,7 +41,7 @@ footer .container-ppd {
 
   font-feature-settings: "salt" on, "liga" off;
 
-  color: #000000;
+  color: #fc992c;
 
   text-align: center;
 }
