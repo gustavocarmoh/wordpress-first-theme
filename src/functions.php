@@ -84,6 +84,15 @@
     }
     add_action('add_meta_boxes', 'ppd_noticia_metabox');
 
+    function ppd_funcao_callback_noticia($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
     function ppd_page_noticia() {
         register_post_type( 
             'noticia', 

@@ -2,7 +2,7 @@
     $estiloPagina = 'blog.css';
     require_once get_template_directory() . '/pages/template/header.php';
     $args = array(
-        'post_type' => 'noticias',
+        'post_type' => 'noticia',
         'post_status' => 'publish',
         'order' => 'ASC',
         'orderby' => 'ID',
