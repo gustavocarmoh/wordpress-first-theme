@@ -4,7 +4,7 @@
 }
 
 span.text-title {
-  color: white;
+  color: #d86018;
   font-size: 3em;
   font-weight: 300;
 }
@@ -117,4 +117,8 @@ span.text-content {
 
 .search-field {
   width: 200px !important;
+}
+
+h3.text-dark {
+  font-size: medium !important;
 }

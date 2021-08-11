@@ -19,7 +19,8 @@ $has_post_thumbnail = get_the_post_thumbnail( $the_post_id );
 					$the_post_id,
 					'featured-thumbnail',
 					[
-						'class' => 'attachment-featured-large size-featured-image'
+						'sizes' => '(max-width: 200px) 200px, 180px',
+						'class' => 'card-img-top size-featured-image'
 					]
 				)
 				?>
