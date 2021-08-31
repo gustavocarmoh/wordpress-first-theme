@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Glegoo");
+
 * {
-  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Glegoo";
   font-style: normal;
   font-weight: normal;
 }
@@ -45,9 +47,10 @@ main {
   flex: 1;
 }
 
-.site-header {
-  background-color: #fff;
+header.site-header {
+  background-color: #2e3949;
 }
+
 .site-header div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -58,15 +61,15 @@ main {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 7rem;
 }
+
 .site-header nav #menu-principal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
+
 .site-header nav #nav-bar a {
-  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
   /* identical to box height, or 143% */
 
@@ -74,17 +77,41 @@ main {
 
   /* Text / Gray 900 */
 
-  color: #18191f;
+  color: #fc992c;
 
   font-size: 1.2em;
 }
+
 .site-header nav #menu-principal .current_page_item {
   border-bottom: 1px solid #0f0e19;
   padding-bottom: 5px;
 }
+
 .site-header nav #menu-principal li {
-  margin-right: 2rem;
 }
 .site-header nav #menu-principal li:last-child {
   margin-right: 0;
+}
+
+.menu-item-gtranslate {
+  align-self: center !important;
+}
+
+.container {
+  align-items: center !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fc992c !important;
+}
+
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: #d86018 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #ddd !important;
 }

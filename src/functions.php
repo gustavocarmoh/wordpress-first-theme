@@ -4,9 +4,10 @@
     }
     add_action( 'after_setup_theme', 'register_navwalker' );
 
-    function pegandoTextosParaAluno() {   
+    function pegandoTextosParaBanner() {
+    
         $args = array(
-            'post_type' => 'banners',
+            'post_type' => 'alunos',
             'post_status' => 'publish',
             'posts_per_page' => 1
         );
@@ -29,7 +30,6 @@
             if($key !== 'texto_home_1' && $key !== 'texto_home_2'){
                 continue;
             }
-
             update_post_meta(
                 $post_id,
                 '_'.$key,
@@ -44,24 +44,107 @@
         $texto_home_1 = get_post_meta($post->ID, '_texto_home_1', true);
         $texto_home_2 = get_post_meta($post->ID, '_texto_home_2', true);
         ?>
-            <label for="texto_home_1">Nome completo do aluno:</label>
+            <label for="texto_home_1">Descrição:</label>
             <input type="text" name="texto_home_1" style="width: 100%" value="<?= $texto_home_1 ?>"/>
             <br>
             <br>
-            <label for="texto_home_2">Informações</label>
+            <label for="texto_home_2">Lattes(url):</label>
             <input type="text" name="texto_home_2" style="width: 100%" value="<?= $texto_home_2 ?>"/>
+        <?php
+    }
+
+    function ppd_funcao_callback_midia($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
         <?php
     }
 
     function ppd_home_metabox() {
         add_meta_box(
             'ppd_home_page_personalizada',
-            'Texto para o aluno',
+            'Informações do aluno',
             'ppd_funcao_callback_home',
             'alunos'
         );
     }
     add_action('add_meta_boxes', 'ppd_home_metabox');
+
+
+
+    function ppd_noticia_metabox() {
+        add_meta_box(
+            'pd_page_noticias',
+            'Publicações',
+            'ppd_funcao_callback_noticia',
+            'noticia'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_noticia_metabox');
+
+    function ppd_funcao_callback_noticia($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
+    function ppd_page_noticia() {
+        register_post_type( 
+            'noticia', 
+            array(
+                'labels' => array('name' => 'Notícias'),
+                'public' => true,
+                'menu_position' => 4,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_noticia');
+
+    function ppd_midia_metabox() {
+        add_meta_box(
+            'pd_page_midia',
+            'Publicações',
+            'ppd_funcao_callback_midia',
+            'midia'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_midia_metabox');
+
+    function ppd_page_midia() {
+        register_post_type( 
+            'midia', 
+            array(
+                'labels' => array('name' => 'Vídeos'),
+                'public' => true,
+                'menu_position' => 4,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_midia');
+
+    function ppd_home_salvando_dados_metabox_3($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_3');
 
     function ppd_home_page_personalizada() {
         register_post_type( 
@@ -77,77 +160,60 @@
     }
     add_action('init', 'ppd_home_page_personalizada');
 
-    function ppd_registrando_taxonomia() {
-        register_taxonomy(
-            'artigo',
-            'article',
-            array(
-                'labels' => array('name' => 'Temas'),
-                'hierarchical' => true
-            )
-        );
-    }
-    add_action('init', 'ppd_registrando_taxonomia');
-
-    function ppd_tipo_post_artigo() {
-        register_post_type('article', array(
-            'labels' => array('name' => 'Artigo'),
-            'public' => true,
-            'menu_position' => 0,
-            'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-welcome-write-blog'
-        ));
-    }
-    add_action('init', 'ppd_tipo_post_artigo');
-   
-    function ppd_registrando_taxonomia_noticias() {
-        register_taxonomy(
-            'noticias',
-            'news',
-            array(
-                'labels' => array('name' => 'Temas'),
-                'hierarchical' => true
-            )
-        );
-    }
-    add_action('init', 'ppd_registrando_taxonomia_noticias');
-
-    function ppd_tipo_post_noticias() {
-        register_post_type('news', array(
-            'labels' => array('name' => 'Noticias'),
+    function ppd_tipo_post_pesquisadores() {
+        register_post_type('pesquisador', array(
+            'labels' => array('name' => 'Pesquisadores'),
             'public' => true,
             'menu_position' => 1,
-            'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-welcome-add-page'
+            'supports' => array('title', 'thumbnail'),
+            'menu_icon' => 'dashicons-admin-users'
         ));
     }
-    add_action('init', 'ppd_tipo_post_noticias');
-
-    function ppd_menu() {
-        register_nav_menu('menu-navegacao',__('Menu navegação'));
+    add_action('init', 'ppd_tipo_post_pesquisadores');
+      
+    function ppd_pesquisador_metabox() {
+        add_meta_box(
+            'ppd_tipo_post_pesquisadores',
+            'Informações do pesquisador',
+            'ppd_funcao_callback_pesquisador',
+            'pesquisador'
+        );
     }
-    add_action('init', 'ppd_menu');
+    add_action('add_meta_boxes', 'ppd_pesquisador_metabox');
 
-        /**
-         * Sets up theme defaults and registers support for various WordPress features.
-         *
-         * Note that this function is hooked into the after_setup_theme hook, which
-         * runs before the init hook. The init hook is too late for some features, such
-         * as indicating support for post thumbnails.
-         */
-        function theme_setup() {
-            /*
-             * Make theme available for translation.
-             * Translations can be filed in the /languages/ directory.
-             * If you're building a theme based on Screenr, use a find and replace
-             * to change 'screenr' to the name of your theme in all the template files.
-             */
-            load_theme_textdomain( 'screenr', get_template_directory() . '/languages' );
-    
-            // Add default posts and comments RSS feed links to head.
-            add_theme_support( 'automatic-feed-links' );
-    
-            /*
+    function ppd_funcao_callback_pesquisador($post){
+
+        $desc_1 = get_post_meta($post->ID, '_desc_1', true);
+        $lattes_2 = get_post_meta($post->ID, '_lattes_2', true);
+        $ufmg_4 = get_post_meta($post->ID, '_ufmg_4', true);
+        ?>
+            <label for="desc_1">Descrição:</label>
+            <input type="text" name="desc_1" style="width: 100%" value="<?= $desc_1 ?>"/>
+            <br>
+            <label for="lattes_2">Currículo Lattes(url):</label>
+            <input type="text" name="lattes_2" style="width: 100%" value="<?= $lattes_2 ?>"/>
+            <label for="ufmg_4">Perfil UFMG (url):</label>
+            <input type="text" name="ufmg_4" style="width: 100%" value="<?= $ufmg_4 ?>"/>
+        <?php
+    }
+
+    function ppd_home_salvando_dados_metabox_2($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'desc_1' && $key !== 'lattes_2' && $key !== 'linkedin_3' && $key !== 'ufmg_4'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_2');
+
+    function ppd_adicionando_recursos() {
+        /*
              * Let WordPress manage the document title.
              * By adding theme support, we declare that this theme does not use a
              * hard-coded <title> tag in the document head, and expect WordPress to
@@ -172,51 +238,259 @@
             add_image_size( 'blog-grid', 540, 300, true );
             add_image_size( 'blog-list', 790, 400, true );
             add_image_size( 'service-small', 538, 280, true );
+        add_theme_support('custom-logo');
+    }
+    add_action('after_setup_theme', 'ppd_adicionando_recursos');
+
+    function ppd_menu() {
+        register_nav_menus( array(
+            'primary' => __('Menu navegação','menu-navegacao' )
+        ) );
+    }
+    add_action('init', 'ppd_menu');
+
+    if ( ! defined( 'AQUILA_DIR_PATH' ) ) {
+        define( 'AQUILA_DIR_PATH', untrailingslashit( get_template_directory() ) );
+    }
     
-            add_theme_support(
-                'custom-logo',
-                array(
-                    'height'      => 60,
-                    'width'       => 240,
-                    'flex-height' => true,
-                    'flex-width'  => true,
-                // 'header-text' => array( 'site-title', 'site-description' ),
-                )
-            );
+    if ( ! defined( 'AQUILA_DIR_URI' ) ) {
+        define( 'AQUILA_DIR_URI', untrailingslashit( get_template_directory_uri() ) );
+    }
     
-            // This theme uses wp_nav_menu() in one location.
-            register_nav_menus(
-                array(
-                    'primary' => esc_html__( 'Primary', 'screenr' ),
-                )
-            );
+    if ( ! defined( 'AQUILA_BUILD_URI' ) ) {
+        define( 'AQUILA_BUILD_URI', untrailingslashit( get_template_directory_uri() ) . '/assets/build' );
+    }
     
-            /*
-             * Switch default core markup for search form, comment form, and comments
-             * to output valid HTML5.
-             */
-            add_theme_support(
-                'html5',
-                array(
-                    'search-form',
-                    'comment-form',
-                    'comment-list',
-                    'gallery',
-                    'caption',
-                )
-            );
+    if ( ! defined( 'AQUILA_BUILD_PATH' ) ) {
+        define( 'AQUILA_BUILD_PATH', untrailingslashit( get_template_directory() ) . '/assets/build' );
+    }
     
-            // Set up the WordPress core custom background feature.
-            add_theme_support(
-                'custom-background',
-                apply_filters(
-                    'screenr_custom_background_args',
-                    array(
-                        'default-color' => 'ffffff',
-                        'default-image' => '',
-                    )
-                )
+    if ( ! defined( 'AQUILA_BUILD_JS_URI' ) ) {
+        define( 'AQUILA_BUILD_JS_URI', untrailingslashit( get_template_directory_uri() ) . '/assets/build/js' );
+    }
+    
+    if ( ! defined( 'AQUILA_BUILD_JS_DIR_PATH' ) ) {
+        define( 'AQUILA_BUILD_JS_DIR_PATH', untrailingslashit( get_template_directory() ) . '/assets/build/js' );
+    }
+    
+    if ( ! defined( 'AQUILA_BUILD_IMG_URI' ) ) {
+        define( 'AQUILA_BUILD_IMG_URI', untrailingslashit( get_template_directory_uri() ) . '/assets/build/src/img' );
+    }
+    
+    if ( ! defined( 'AQUILA_BUILD_CSS_URI' ) ) {
+        define( 'AQUILA_BUILD_CSS_URI', untrailingslashit( get_template_directory_uri() ) . '/assets/build/css' );
+    }
+    
+    if ( ! defined( 'AQUILA_BUILD_CSS_DIR_PATH' ) ) {
+        define( 'AQUILA_BUILD_CSS_DIR_PATH', untrailingslashit( get_template_directory() ) . '/assets/build/css' );
+    }
+    
+    if ( ! defined( 'AQUILA_BUILD_LIB_URI' ) ) {
+        define( 'AQUILA_BUILD_LIB_URI', untrailingslashit( get_template_directory_uri() ) . '/assets/build/library' );
+    }
+    
+    require_once AQUILA_DIR_PATH . '/inc/helpers/autoloader.php';
+    require_once AQUILA_DIR_PATH . '/inc/helpers/template-tags.php';
+    
+    function aquila_get_theme_instance() {
+        \AQUILA_THEME\Inc\AQUILA_THEME::get_instance();
+    }
+    
+    aquila_get_theme_instance();
+
+    function bootstrap_pagination( \WP_Query $wp_query = null, $echo = true, $params = [] ) {
+        if ( null === $wp_query ) {
+            global $wp_query;
+        }
+    
+        $add_args = [];
+    
+        //add query (GET) parameters to generated page URLs
+        /*if (isset($_GET[ 'sort' ])) {
+            $add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
+        }*/
+    
+        $pages = paginate_links( array_merge( [
+                'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+                'format'       => '?paged=%#%',
+                'current'      => max( 1, get_query_var( 'paged' ) ),
+                'total'        => $wp_query->max_num_pages,
+                'type'         => 'array',
+                'show_all'     => false,
+                'end_size'     => 3,
+                'mid_size'     => 1,
+                'prev_next'    => true,
+                'prev_text'    => __( '« Prev' ),
+                'next_text'    => __( 'Next »' ),
+                'add_args'     => $add_args,
+                'add_fragment' => ''
+            ], $params )
+        );
+    
+        if ( is_array( $pages ) ) {
+            //$current_page = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
+            $pagination = '<div class="pagination"><ul class="pagination">';
+    
+            foreach ( $pages as $page ) {
+                $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' . str_replace('page-numbers', 'page-link', $page) . '</li>';
+            }
+    
+            $pagination .= '</ul></div>';
+    
+            if ( $echo ) {
+                echo $pagination;
+            } else {
+                return $pagination;
+            }
+        }
+    
+        return null;
+    }
+
+    /* Conjuntura */
+    function ppd_funcao_callback_conjuntura($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
+    function ppd_conjuntura_metabox() {
+        add_meta_box(
+            'pd_page_conjuntura',
+            'Boletins de conjuntura',
+            'ppd_funcao_callback_conjuntura',
+            'conjuntura'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_conjuntura_metabox');
+
+    function ppd_page_conjuntura() {
+        register_post_type( 
+            'conjuntura', 
+            array(
+                'labels' => array('name' => 'Boletins de conjuntura'),
+                'public' => true,
+                'menu_position' => 7,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_conjuntura');
+
+    function ppd_home_salvando_dados_metabox_conjuntura($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
             );
         }
-    add_action( 'after_setup_theme', 'theme_setup' );
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_conjuntura');
+
+    /* Notas técnicas */
+    function ppd_funcao_callback_notas($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
+    function ppd_notas_metabox() {
+        add_meta_box(
+            'pd_page_notas',
+            'Notas técnicas',
+            'ppd_funcao_callback_notas',
+            'notas'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_notas_metabox');
+
+    function ppd_page_notas() {
+        register_post_type( 
+            'notas', 
+            array(
+                'labels' => array('name' => 'Notas técnicas'),
+                'public' => true,
+                'menu_position' => 5,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_notas');
+
+    function ppd_home_salvando_dados_metabox_notas($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_notas');
+    
+    /* Relatórios de previsão */
+    function ppd_funcao_callback_previsao($post){
+
+        $url_2 = get_post_meta($post->ID, '_url_2', true);
+        ?>
+            <label for="url_2">Url:</label>
+            <input type="text" name="url_2" style="width: 100%" value="<?= $url_2 ?>"/>
+        <?php
+    }
+
+    function ppd_previsao_metabox() {
+        add_meta_box(
+            'pd_page_previsao',
+            'Relatórios de previsão',
+            'ppd_funcao_callback_previsao',
+            'previsao'
+        );
+    }
+    add_action('add_meta_boxes', 'ppd_previsao_metabox');
+
+    function ppd_page_previsao() {
+        register_post_type( 
+            'previsao', 
+            array(
+                'labels' => array('name' => 'Relatórios de previsão'),
+                'public' => true,
+                'menu_position' => 6,
+                'menu_icon' => 'dashicons-welcome-write-blog',
+                'supports' => array('title', 'thumbnail')
+            )
+        );
+    }
+    add_action('init', 'ppd_page_previsao');
+
+    function ppd_home_salvando_dados_metabox_previsao($post_id) {
+        foreach($_POST as $key => $value) {
+            if($key !== 'url_2'){
+                continue;
+            }
+
+            update_post_meta(
+                $post_id,
+                '_'.$key,
+                $_POST[$key]
+            );
+        }
+    }
+    add_action('save_post', 'ppd_home_salvando_dados_metabox_previsao');
 ?>

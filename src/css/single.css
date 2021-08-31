@@ -1,0 +1,69 @@
+.footer {
+  padding: 0%;
+  background-color: #f3f3f3;
+}
+
+span.text-title {
+  color: white;
+  font-size: 4em;
+  font-weight: 600;
+}
+
+span.text-content {
+  margin-top: 2%;
+  color: black;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+  width: 80%;
+}
+
+.container-title {
+  padding-left: 5%;
+  background-color: #2e3949;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+
+.container-ppd-body {
+  display: flex;
+  flex-direction: row;
+
+  padding-top: 1%;
+  padding-left: 7%;
+  width: 90%;
+}
+
+.container-ppd-body-left {
+  width: 50%;
+  height: 100%;
+}
+
+.container-ppd-body-right {
+  padding-left: 2%;
+  width: 50%;
+  height: 100%;
+}
+
+.map {
+  width: 100%;
+  height: 400px;
+}
+
+.btn-lg {
+  color: white;
+  background-color: #d86018;
+}
+
+.container {
+  padding-top: 2%;
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 0rem !important;
+}
+
+.logo-footer {
+  width: 120px !important;
+}

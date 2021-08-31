@@ -1,36 +1,63 @@
 <?php
-$estiloPagina = 'contato.css';
-require_once get_template_directory() . '/pages/template/header.php';
+	$estiloPagina = 'single.css';
+	require_once get_template_directory() . '/pages/template/header.php';
 ?>
 
-	<div id="content" class="site-content">
+	<div id="primary">
+		<main id="main" class="site-main mt-5" role="main">
+			
+			<div class="container-title">
+                <span class="text-title"><?php single_post_title(); ?></span>
+            </div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-8 col-sm-12">
+						<?php
+						if ( have_posts() ) :
+							?>
+							<div class="post-wrap">
+							<?php
+							if ( is_home() && ! is_front_page() ) {
+								?>
+								<header class="mb-5">
+									<h1 class="page-title screen-reader-text">
+										<?php single_post_title(); ?>
+									</h1>
+								</header>
+								<?php
+							}
 
-		<div id="content-inside" class="container <?php echo esc_attr( screenr_get_layout() ); ?>-sidebar">
-			<div id="primary" class="content-area">
-				<main id="main" class="site-main" role="main">
+							while ( have_posts() ) : the_post();
 
-				<?php while ( have_posts() ) : the_post(); ?>
+								get_template_part( 'template-parts/content-2' );
 
-					<?php get_template_part( 'template-parts/content', 'single' ); ?>
+							endwhile;
+							?>
 
+						<?php
+
+						else :
+
+							get_template_part( 'template-parts/content-none' );
+
+							?>
+
+							</div>
+						<?php
+						endif;
+
+						?>
+					</div>
 					<?php
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
+					// Next and previous link for page navigation.
+						get_template_part( 'template-parts/components/posts-carousel' );
 					?>
-
-				<?php endwhile; // End of the loop. ?>
-
-				</main><!-- #main -->
-			</div><!-- #primary -->
-
-			<?php get_sidebar(); ?>
-
-		</div><!--#content-inside -->
-	</div><!-- #content -->
+				</div>
+				
+			</div>
+		</main>
+	</div>
 
 <?php
-$estiloPagina = 'contato.css';
 require_once get_template_directory() . '/pages/template/footer.php';
-?>
+

@@ -8,11 +8,11 @@
     <?php wp_head(); ?>
 
     <link rel="icon" href="<?= get_template_directory_uri() . '/assets/logo-ppd.png' ?>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/normalize.css' ?>" />
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/header.css' ?>" />
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/' . $estiloPagina ?>">
     <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/footer.css' ?>" />
+    
 
 </head>
 <body <?php body_class(); ?>>
@@ -36,10 +36,16 @@
                     ) );
                 ?>
             </div>
+            <!--
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
+             -->
         </nav>
     </div>
+    <?php if( is_page('contato') ){ ?>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/verif.js"></script>
+    <?php }?>
 </header>

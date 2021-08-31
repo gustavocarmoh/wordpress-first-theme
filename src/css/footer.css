@@ -1,10 +1,10 @@
 .footer footer {
   padding-top: 5%;
-  background-color: #fff;
+  background-color: #2e3949;
 }
 
-hr {
-  width: 90%;
+.hr {
+  width: 100%;
   background: #010101;
   opacity: 0.2;
 }
@@ -32,16 +32,17 @@ hr {
 }
 
 footer .container-ppd {
-  font-family: "Inter";
+  font-family: "Glegoo";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
-  /* identical to box height, or 171% */
 
-  font-feature-settings: "salt" on, "liga" off;
-
-  color: #000000;
+  color: #010101;
 
   text-align: center;
+}
+
+.logo-footer {
+  width: 120px !important;
 }

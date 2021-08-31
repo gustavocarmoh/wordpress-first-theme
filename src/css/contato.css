@@ -1,12 +1,13 @@
 .footer {
+  margin-top: 2%;
   padding: 0%;
-  background-color: #fff;
+  background-color: #d9d9d9;
 }
 
 span.text-title {
-  color: white;
-  font-size: 4em;
-  font-weight: 900;
+  color: #d86018 !important;
+  font-size: 3em;
+  font-weight: 300;
 }
 
 span.text-content {
@@ -20,7 +21,9 @@ span.text-content {
 
 .container-title {
   padding-left: 5%;
-  background-color: #f29a34;
+  background-color: #2e3949;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .container-ppd-body {
@@ -50,5 +53,18 @@ span.text-content {
 
 .btn-lg {
   color: white;
-  background-color: #f29a34;
+  background-color: #d86018;
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 0rem !important;
+}
+
+.logo-footer {
+  width: 120px !important;
+}
+
+.site-header {
+  padding-top: 1rem !important;
 }
